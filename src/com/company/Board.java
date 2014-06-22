@@ -37,4 +37,8 @@ public class Board {
         }
         return true;
     }
+
+    public boolean boardFull(){
+        return false;
+    }
 }
