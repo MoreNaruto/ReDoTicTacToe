@@ -24,23 +24,27 @@ public class Player {
     }
 
     public void makeMove() throws IOException {
-        if (board.boardFull()){
-            out.println("Game is a draw");
-            return;
-        }
-        out.print("Enter a number between 1-9: ");
-        int place = Integer.parseInt(reader.readLine());
+        while(true) {
+            if (board.boardFull()) {
+                out.println("Game is a draw");
+                break;
+            }
+            out.print("Enter a number between 1-9: ");
+            int place = Integer.parseInt(reader.readLine());
 
-        if (board.isAlreadyOccupied(place)){
-            out.println("Location already taken\n");
-            makeMove();
-        }
-        if (player1Turn) {
-            board.placePlayerPiece(place, "X");
-            player1Turn = false;
-        } else {
-            board.placePlayerPiece(place, "O");
-            player1Turn = true;
+            if (board.isAlreadyOccupied(place)) {
+                out.println("Location already taken\n");
+                makeMove();
+                break;
+            }
+            if (player1Turn) {
+                board.placePlayerPiece(place, "X");
+                player1Turn = false;
+            } else {
+                board.placePlayerPiece(place, "O");
+                player1Turn = true;
+            }
+
         }
 
     }

@@ -38,7 +38,12 @@ public class Board {
         return true;
     }
 
-    public boolean boardFull(){
-        return false;
+    public boolean boardFull() {
+        for (int i = 0; i < boardPieces.length; i++) {
+            if (!isAlreadyOccupied(i+1)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
