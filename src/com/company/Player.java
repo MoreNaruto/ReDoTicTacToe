@@ -26,7 +26,11 @@ public class Player {
     public void makeMove() throws IOException {
         out.print("Enter a number between 1-9: ");
         int place = Integer.parseInt(reader.readLine());
-        boardPieces[place-1] = "X";
+        if (player1Turn) {
+            boardPieces[place - 1] = "X";
+        } else {
+            boardPieces[place - 1] = "O";
+        }
         board.drawBoard();
     }
 }
