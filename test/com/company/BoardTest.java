@@ -37,16 +37,4 @@ public class BoardTest {
                 "  |  |  " );
     }
 
-    @Test
-    public void testPlayer1MakeMove() throws IOException {
-        when(mockReader.readLine()).thenReturn("1");
-        verify(mockStream).println(
-                " X|  |  \n" +
-                "--------\n" +
-                "  |  |  \n" +
-                "--------\n" +
-                "  |  |  "
-        );
-    }
-
 }
