@@ -1,3 +1,4 @@
+import com.company.Board;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,13 +13,16 @@ import static org.mockito.Mockito.verify;
 public class BoardTest {
 
     private PrintStream mockStream;
+    private Board board;
 
     @Before
     public void setUp(){
         mockStream = mock(PrintStream.class);
+        board = new Board(mockStream);
     }
     @Test
     public void testDrawBoard(){
+        board.drawBoard();
         verify(mockStream).println(
                 "  |  |  \n" +
                 "--------\n" +
