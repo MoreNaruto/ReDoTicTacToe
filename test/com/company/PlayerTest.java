@@ -36,7 +36,7 @@ public class PlayerTest {
 
     @Test
     public void testPlayer1MakeMove() throws IOException {
-
+        player.player1Turn = true;
         when(mockReader.readLine()).thenReturn("1");
         player.makeMove();
         verify(mockStream).println(
@@ -49,6 +49,7 @@ public class PlayerTest {
 
     @Test
     public void testPlayer2MakeMove() throws IOException {
+        player.player1Turn = false;
         when(mockReader.readLine()).thenReturn("1");
         player.makeMove();
         verify(mockStream).println(
