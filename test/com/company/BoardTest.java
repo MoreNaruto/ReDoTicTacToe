@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.mockito.Mockito.mock;
@@ -42,9 +43,11 @@ public class BoardTest {
     }
 
     @Test
-    public void testIfBoardIsFull(){
+    public void testIfBoardIsFull() throws IOException {
         Board testBoard = mock(Board.class);
+        Player testPlayer = mock(Player.class);
         when(testBoard.boardFull()).thenReturn(true);
+        testPlayer.makeMove();
         verify(mockStream).println("Game is a draw");
     }
 
