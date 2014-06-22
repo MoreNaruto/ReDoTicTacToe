@@ -31,7 +31,10 @@ public class Board {
         drawBoard();
     }
 
-    public boolean isAlreadyOccupied(int i) {
+    public boolean isAlreadyOccupied(int placement) {
+        if(boardPieces[placement-1].equals("")){
+            return false;
+        }
         return true;
     }
 }

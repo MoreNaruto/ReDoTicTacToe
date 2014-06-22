@@ -26,6 +26,10 @@ public class Player {
     public void makeMove() throws IOException {
         out.print("Enter a number between 1-9: ");
         int place = Integer.parseInt(reader.readLine());
+        if (board.isAlreadyOccupied(place)){
+            out.println("Location already taken\n");
+            makeMove();
+        }
         if (player1Turn) {
             board.placePlayerPiece(place, "X");
             player1Turn = false;

@@ -62,12 +62,13 @@ public class PlayerTest {
     }
 
     @Test
-    public void testLocationAlreadyTaken() throws IOException {
+    public void shouldReportWhenLocationisOccupied() throws IOException {
         Board mockBoard = mock(Board.class);
         Player testPlayer = new Player(mockReader, mockStream, mockBoard);
-        when(mockBoard.isAlreadyOccupied(1)).thenReturn(true);
+        when(mockBoard.isAlreadyOccupied(1)).thenReturn(true).thenReturn(false);
         when(mockReader.readLine()).thenReturn("1");
         testPlayer.makeMove();
-        verify(mockStream).println("Location already taken");
+        verify(mockStream).println("Location already taken\n");
+
     }
 }
