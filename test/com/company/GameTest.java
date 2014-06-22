@@ -28,16 +28,23 @@ public class GameTest {
 
 
     @Test
-    public void testIfBoardIsFull() throws IOException {
+    public void shouldbeDrawWhenBoardisFull() throws IOException {
         when(board.boardFull()).thenReturn(true);
         game.gameOverByDraw();
         verify(mockStream).println("Game is a draw");
     }
 
     @Test
-    public void testIfBoardHasWinnerPlayer1(){
+    public void shouldBePlayer1WinWhenGameHasWinner(){
         when(board.hasWinner()).thenReturn(true);
         game.gameOverByWinner("X");
         verify(mockStream).println("Player 1 Wins!");
+    }
+
+    @Test
+    public void shouldBePlayer2WinWhenGameHasWinner(){
+        when(board.hasWinner()).thenReturn(true);
+        game.gameOverByWinner("O");
+        verify(mockStream).println("Player 2 Wins!");
     }
 }

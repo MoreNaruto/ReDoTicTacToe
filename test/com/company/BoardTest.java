@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -36,10 +37,18 @@ public class BoardTest {
         board.drawBoard();
         verify(mockStream).println(
                 "  " + boardPieces[0] + "| " + boardPieces[1] + " | " + boardPieces[2] + "  \n" +
-                        "--------\n" +
-                        "  " + boardPieces[3] + "| " + boardPieces[4] + " | " + boardPieces[5] + "  \n" +
-                        "--------\n" +
-                        "  " + boardPieces[6] + "| " + boardPieces[7] + " | " + boardPieces[8]);
+                "--------\n" +
+                "  " + boardPieces[3] + "| " + boardPieces[4] + " | " + boardPieces[5] + "  \n" +
+                "--------\n" +
+                "  " + boardPieces[6] + "| " + boardPieces[7] + " | " + boardPieces[8]);
+    }
+
+    @Test
+    public void testForBoardSpaceOccupied(){
+        board.placePlayerPiece(1, "P");
+
+        assertEquals(board.isAlreadyOccupied(1), true);
+
     }
 
 

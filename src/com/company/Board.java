@@ -26,16 +26,12 @@ public class Board {
     }
 
     public void placePlayerPiece(int place, String playerPiece){
-
         boardPieces[place-1] = playerPiece;
         drawBoard();
     }
 
     public boolean isAlreadyOccupied(int placement) {
-        if(boardPieces[placement-1].equals("")){
-            return false;
-        }
-        return true;
+        return !boardPieces[placement - 1].equals("");
     }
 
     public boolean boardFull() {

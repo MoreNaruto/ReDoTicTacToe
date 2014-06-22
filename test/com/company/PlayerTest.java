@@ -37,7 +37,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlayer1MakeMove() throws IOException {
+    public void shouldMovetoPlaceWhenPlayer1ChoiceAPlace() throws IOException {
         player.player1Turn = true;
         when(mockReader.readLine()).thenReturn("1");
         when(mockGame.gameOverByDraw()).thenReturn(false).thenReturn(true);
@@ -51,7 +51,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void testPlayer2MakeMove() throws IOException {
+    public void shouldMovetoPlaceWhenPlayer2ChoiceAPlace() throws IOException {
         player.player1Turn = false;
         when(mockReader.readLine()).thenReturn("1");
         when(mockGame.gameOverByDraw()).thenReturn(false).thenReturn(true);
@@ -77,7 +77,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void shouldPromptUserToTryAgain() throws IOException {
+    public void shouldPromptUserToTryAgainWhenActionOccurs() throws IOException {
         Board mockBoard = mock(Board.class);
         Player testPlayer = new Player(mockReader, mockStream, mockBoard, mockGame);
         when(mockBoard.isAlreadyOccupied(1)).thenReturn(false);
