@@ -18,22 +18,32 @@ public class PlayerTest {
 
     private PrintStream mockStream;
     private BufferedReader mockReader;
+    private Board board;
+    private Player player;
+    private String[] boardPieces;
 
     @Before
     public void setUp(){
+        boardPieces = new String[9];
+        for (int i = 0; i < boardPieces.length; i++){
+            boardPieces[i] = "";
+        }
         mockStream = mock(PrintStream.class);
         mockReader = mock(BufferedReader.class);
+        board = new Board(mockStream, boardPieces);
+        player = new Player(mockReader, mockStream, boardPieces,board);
     }
 
     @Test
     public void testPlayer1MakeMove() throws IOException {
+
         when(mockReader.readLine()).thenReturn("1");
+        player.makeMove();
         verify(mockStream).println(
-                " X|  |  \n" +
-                "--------\n" +
-                "  |  |  \n" +
-                "--------\n" +
-                "  |  |  "
-        );
+          "  "+ "X" +"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +
+          "--------\n" +
+          "  "+boardPieces[3]+"| "+boardPieces[4]+" | "+ boardPieces[5] +"  \n" +
+          "--------\n" +
+          "  "+boardPieces[6]+"| "+boardPieces[7]+" | "+ boardPieces[8]);
     }
 }

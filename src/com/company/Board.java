@@ -17,11 +17,11 @@ public class Board {
 
     public void drawBoard(){
         out.println(
-                " "+boardPieces[0]+"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +
+                "  "+boardPieces[0]+"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +
                 "--------\n" +
-                " "+boardPieces[3]+"| "+boardPieces[4]+" | "+ boardPieces[5] +"  \n" +
+                "  "+boardPieces[3]+"| "+boardPieces[4]+" | "+ boardPieces[5] +"  \n" +
                 "--------\n" +
-                " "+boardPieces[6]+"| "+boardPieces[7]+" | "+ boardPieces[8]);
+                "  "+boardPieces[6]+"| "+boardPieces[7]+" | "+ boardPieces[8]);
 
     }
 }
