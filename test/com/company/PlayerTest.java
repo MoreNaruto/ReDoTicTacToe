@@ -87,12 +87,4 @@ public class PlayerTest {
         verify(mockStream).print("Enter a number between 1-9: ");
     }
 
-    @Test
-    public void testIfBoardIsFull() throws IOException {
-        Board mockBoard = mock(Board.class);
-        Player testPlayer = new Player(mockReader, mockStream, mockBoard, mockGame);
-        when(mockBoard.boardFull()).thenReturn(true);
-        testPlayer.makeMove();
-        verify(mockStream).println("Game is a draw");
-    }
 }
