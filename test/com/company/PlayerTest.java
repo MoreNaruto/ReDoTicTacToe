@@ -37,8 +37,9 @@ public class PlayerTest {
     @Test
     public void testPlayer1MakeMove() throws IOException {
         player.player1Turn = true;
-
+        Game mockGame = mock(Game.class);
         when(mockReader.readLine()).thenReturn("1");
+        when(mockGame.gameOver()).thenReturn(false).thenReturn(true);
         player.makeMove();
         verify(mockStream).println(
           "  "+ "X" +"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +

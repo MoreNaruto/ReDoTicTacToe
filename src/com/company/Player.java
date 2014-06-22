@@ -11,6 +11,7 @@ public class Player {
 
     private BufferedReader reader;
     private PrintStream out;
+    public boolean gameOver= false;
 
     private Board board;
     public boolean player1Turn = true;
@@ -24,18 +25,15 @@ public class Player {
     }
 
     public void makeMove() throws IOException {
-        while(true) {
-            if (board.boardFull()) {
-                out.println("Game is a draw");
-                break;
-            }
+        Game gameState = new Game(out, board);
+        while(!gameState.gameOver()) {
+
             out.print("Enter a number between 1-9: ");
             int place = Integer.parseInt(reader.readLine());
 
             if (board.isAlreadyOccupied(place)) {
                 out.println("Location already taken\n");
-                makeMove();
-                break;
+
             }
             if (player1Turn) {
                 board.placePlayerPiece(place, "X");
@@ -48,4 +46,5 @@ public class Player {
         }
 
     }
+
 }
