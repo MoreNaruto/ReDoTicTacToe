@@ -40,7 +40,7 @@ public class PlayerTest {
     public void testPlayer1MakeMove() throws IOException {
         player.player1Turn = true;
         when(mockReader.readLine()).thenReturn("1");
-        when(mockGame.gameOver()).thenReturn(false).thenReturn(true);
+        when(mockGame.gameOverByDraw()).thenReturn(false).thenReturn(true);
         player.makeMove();
         verify(mockStream).println(
           "  "+ "X" +"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +
@@ -54,7 +54,7 @@ public class PlayerTest {
     public void testPlayer2MakeMove() throws IOException {
         player.player1Turn = false;
         when(mockReader.readLine()).thenReturn("1");
-        when(mockGame.gameOver()).thenReturn(false).thenReturn(true);
+        when(mockGame.gameOverByDraw()).thenReturn(false).thenReturn(true);
         player.makeMove();
         verify(mockStream).println(
              "  "+ "O" +"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +
@@ -70,7 +70,7 @@ public class PlayerTest {
         Player testPlayer = new Player(mockReader, mockStream, mockBoard, mockGame);
         when(mockBoard.isAlreadyOccupied(1)).thenReturn(true);
         when(mockReader.readLine()).thenReturn("1");
-        when(mockGame.gameOver()).thenReturn(false).thenReturn(true);
+        when(mockGame.gameOverByDraw()).thenReturn(false).thenReturn(true);
         testPlayer.makeMove();
         verify(mockStream).println("Location already taken\n");
 
@@ -82,7 +82,7 @@ public class PlayerTest {
         Player testPlayer = new Player(mockReader, mockStream, mockBoard, mockGame);
         when(mockBoard.isAlreadyOccupied(1)).thenReturn(false);
         when(mockReader.readLine()).thenReturn("1");
-        when(mockGame.gameOver()).thenReturn(false).thenReturn(true);
+        when(mockGame.gameOverByDraw()).thenReturn(false).thenReturn(true);
         testPlayer.makeMove();
         verify(mockStream).print("Enter a number between 1-9: ");
     }

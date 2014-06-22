@@ -46,4 +46,8 @@ public class Board {
         }
         return true;
     }
+
+    public boolean hasWinner() {
+        return false;
+    }
 }

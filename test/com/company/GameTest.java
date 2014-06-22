@@ -30,7 +30,14 @@ public class GameTest {
     @Test
     public void testIfBoardIsFull() throws IOException {
         when(board.boardFull()).thenReturn(true);
-        game.gameOver();
+        game.gameOverByDraw();
         verify(mockStream).println("Game is a draw");
+    }
+
+    @Test
+    public void testIfBoardHasWinnerPlayer1(){
+        when(board.hasWinner()).thenReturn(true);
+        game.gameOverByWinner();
+        verify(mockStream).println("Player 1 Wins!");
     }
 }

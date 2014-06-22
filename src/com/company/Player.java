@@ -27,7 +27,7 @@ public class Player {
     }
 
     public void makeMove() throws IOException {
-        while(!game.gameOver()) {
+        while(!game.gameOverByDraw()) {
 
             out.print("Enter a number between 1-9: ");
             int place = Integer.parseInt(reader.readLine());

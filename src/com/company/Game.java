@@ -14,11 +14,15 @@ public class Game {
         this.board = board;
     }
 
-    public boolean gameOver(){
+    public boolean gameOverByDraw(){
         if (board.boardFull()){
             out.println("Game is a draw");
             return true;
         }
+        return false;
+    }
+
+    public boolean gameOverByWinner() {
         return false;
     }
 }
