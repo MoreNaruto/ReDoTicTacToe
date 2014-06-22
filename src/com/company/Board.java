@@ -8,7 +8,7 @@ import java.io.PrintStream;
 public class Board {
 
     private PrintStream out;
-    private String[] boardPieces;
+    public String[] boardPieces;
 
     public Board(PrintStream out, String[] boardPieces){
         this.out = out;
@@ -23,5 +23,11 @@ public class Board {
                 "--------\n" +
                 "  "+boardPieces[6]+"| "+boardPieces[7]+" | "+ boardPieces[8]);
 
+    }
+
+    public void placePlayerPiece(int place, String playerPiece){
+
+        boardPieces[place-1] = playerPiece;
+        drawBoard();
     }
 }

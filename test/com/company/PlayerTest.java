@@ -20,31 +20,31 @@ public class PlayerTest {
     private BufferedReader mockReader;
     private Board board;
     private Player player;
-    private String[] boardPieces;
+
 
     @Before
     public void setUp(){
-        boardPieces = new String[9];
-        for (int i = 0; i < boardPieces.length; i++){
-            boardPieces[i] = "";
-        }
         mockStream = mock(PrintStream.class);
         mockReader = mock(BufferedReader.class);
-        board = new Board(mockStream, boardPieces);
-        player = new Player(mockReader, mockStream, boardPieces,board);
+        board = mock(Board.class);
+        board.boardPieces = new String[9];
+        player = new Player(mockReader, mockStream, board);
     }
 
     @Test
     public void testPlayer1MakeMove() throws IOException {
         player.player1Turn = true;
+        for (int i = 0; i < board.boardPieces.length; i++){
+            board.boardPieces[i] = "";
+        }
         when(mockReader.readLine()).thenReturn("1");
         player.makeMove();
         verify(mockStream).println(
-          "  "+ "X" +"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +
+          "  "+ "X" +"| "+board.boardPieces[1]+" | "+ board.boardPieces[2] +"  \n" +
           "--------\n" +
-          "  "+boardPieces[3]+"| "+boardPieces[4]+" | "+ boardPieces[5] +"  \n" +
+          "  "+board.boardPieces[3]+"| "+board.boardPieces[4]+" | "+ board.boardPieces[5] +"  \n" +
           "--------\n" +
-          "  "+boardPieces[6]+"| "+boardPieces[7]+" | "+ boardPieces[8]);
+          "  "+board.boardPieces[6]+"| "+board.boardPieces[7]+" | "+ board.boardPieces[8]);
     }
 
     @Test
@@ -53,10 +53,17 @@ public class PlayerTest {
         when(mockReader.readLine()).thenReturn("1");
         player.makeMove();
         verify(mockStream).println(
-             "  "+ "O" +"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +
+             "  "+ "O" +"| "+board.boardPieces[1]+" | "+ board.boardPieces[2] +"  \n" +
              "--------\n" +
-             "  "+boardPieces[3]+"| "+boardPieces[4]+" | "+ boardPieces[5] +"  \n" +
+             "  "+board.boardPieces[3]+"| "+board.boardPieces[4]+" | "+ board.boardPieces[5] +"  \n" +
              "--------\n" +
-             "  "+boardPieces[6]+"| "+boardPieces[7]+" | "+ boardPieces[8]);
+             "  "+board.boardPieces[6]+"| "+board.boardPieces[7]+" | "+ board.boardPieces[8]);
+    }
+
+    @Test
+    public void testLocationAlreadyTaken() throws IOException {
+        when(mockReader.readLine()).thenReturn("1");
+        player.makeMove();
+        verify(mockStream).println("Location already taken");
     }
 }

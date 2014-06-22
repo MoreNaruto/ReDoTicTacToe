@@ -11,12 +11,12 @@ public class Player {
 
     private BufferedReader reader;
     private PrintStream out;
-    private String[] boardPieces;
+
     private Board board;
     public boolean player1Turn = true;
 
-    public Player(BufferedReader reader, PrintStream out, String[] boardPieces, Board board){
-        this.boardPieces = boardPieces;
+    public Player(BufferedReader reader, PrintStream out, Board board){
+
         this.reader = reader;
         this.out = out;
         this.board = board;
@@ -27,10 +27,11 @@ public class Player {
         out.print("Enter a number between 1-9: ");
         int place = Integer.parseInt(reader.readLine());
         if (player1Turn) {
-            boardPieces[place - 1] = "X";
+            board.placePlayerPiece(place, "X");
+            player1Turn = false;
         } else {
-            boardPieces[place - 1] = "O";
+            board.placePlayerPiece(place, "O");
+            player1Turn = true;
         }
-        board.drawBoard();
     }
 }
