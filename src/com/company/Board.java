@@ -30,4 +30,8 @@ public class Board {
         boardPieces[place-1] = playerPiece;
         drawBoard();
     }
+
+    public boolean isAlreadyOccupied(int i) {
+        return true;
+    }
 }
