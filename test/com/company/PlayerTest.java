@@ -73,5 +73,12 @@ public class PlayerTest {
     }
 
     @Test
-    public 
+    public void shouldPromptUserToTryAgain() throws IOException {
+        Board mockBoard = mock(Board.class);
+        Player testPlayer = mock(Player.class);
+        when(mockBoard.isAlreadyOccupied(1)).thenReturn(true).thenReturn(false);
+        when(mockReader.readLine()).thenReturn("1");
+        testPlayer.makeMove();
+        verify(testPlayer).makeMove();
+    }
 }
