@@ -24,8 +24,13 @@ public class Player {
     }
 
     public void makeMove() throws IOException {
+        if (board.boardFull()){
+            out.println("Game is a draw");
+            return;
+        }
         out.print("Enter a number between 1-9: ");
         int place = Integer.parseInt(reader.readLine());
+
         if (board.isAlreadyOccupied(place)){
             out.println("Location already taken\n");
             makeMove();
@@ -37,5 +42,6 @@ public class Player {
             board.placePlayerPiece(place, "O");
             player1Turn = true;
         }
+
     }
 }

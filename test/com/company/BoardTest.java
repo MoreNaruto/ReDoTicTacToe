@@ -42,13 +42,6 @@ public class BoardTest {
                         "  " + boardPieces[6] + "| " + boardPieces[7] + " | " + boardPieces[8]);
     }
 
-    @Test
-    public void testIfBoardIsFull() throws IOException {
-        Board testBoard = mock(Board.class);
-        Player testPlayer = mock(Player.class);
-        when(testBoard.boardFull()).thenReturn(true);
-        testPlayer.makeMove();
-        verify(mockStream).println("Game is a draw");
-    }
+
 
 }

@@ -81,4 +81,13 @@ public class PlayerTest {
         testPlayer.makeMove();
         verify(testPlayer).makeMove();
     }
+
+    @Test
+    public void testIfBoardIsFull() throws IOException {
+        Board mockBoard = mock(Board.class);
+        Player testPlayer = new Player(mockReader, mockStream, mockBoard);
+        when(mockBoard.boardFull()).thenReturn(true);
+        testPlayer.makeMove();
+        verify(mockStream).println("Game is a draw");
+    }
 }
