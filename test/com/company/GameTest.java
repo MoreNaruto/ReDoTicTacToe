@@ -37,7 +37,7 @@ public class GameTest {
     @Test
     public void testIfBoardHasWinnerPlayer1(){
         when(board.hasWinner()).thenReturn(true);
-        game.gameOverByWinner();
+        game.gameOverByWinner("X");
         verify(mockStream).println("Player 1 Wins!");
     }
 }

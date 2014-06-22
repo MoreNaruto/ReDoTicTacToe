@@ -38,9 +38,15 @@ public class Player {
             }
             if (player1Turn) {
                 board.placePlayerPiece(place, "X");
+                if(game.gameOverByWinner("X")){
+                    break;
+                }
                 player1Turn = false;
             } else {
                 board.placePlayerPiece(place, "O");
+                if(game.gameOverByWinner("O")){
+                    break;
+                }
                 player1Turn = true;
             }
 

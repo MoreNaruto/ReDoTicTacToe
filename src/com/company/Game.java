@@ -22,7 +22,16 @@ public class Game {
         return false;
     }
 
-    public boolean gameOverByWinner() {
+    public boolean gameOverByWinner(String playerPiece) {
+        if (board.hasWinner()){
+            if(playerPiece.equals("X")){
+                out.println("Player 1 Wins!");
+                return true;
+            } else {
+                out.println("Player 2 Wins!");
+                return true;
+            }
+        }
         return false;
     }
 }
