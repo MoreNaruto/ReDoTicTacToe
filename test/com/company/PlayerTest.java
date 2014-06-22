@@ -46,4 +46,16 @@ public class PlayerTest {
           "--------\n" +
           "  "+boardPieces[6]+"| "+boardPieces[7]+" | "+ boardPieces[8]);
     }
+
+    @Test
+    public void testPlayer2MakeMove() throws IOException {
+        when(mockReader.readLine()).thenReturn("1");
+        player.makeMove();
+        verify(mockStream).println(
+             "  "+ "O" +"| "+boardPieces[1]+" | "+ boardPieces[2] +"  \n" +
+             "--------\n" +
+             "  "+boardPieces[3]+"| "+boardPieces[4]+" | "+ boardPieces[5] +"  \n" +
+             "--------\n" +
+             "  "+boardPieces[6]+"| "+boardPieces[7]+" | "+ boardPieces[8]);
+    }
 }

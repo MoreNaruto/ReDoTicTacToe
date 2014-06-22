@@ -13,6 +13,7 @@ public class Player {
     private PrintStream out;
     private String[] boardPieces;
     private Board board;
+    public boolean player1Turn = true;
 
     public Player(BufferedReader reader, PrintStream out, String[] boardPieces, Board board){
         this.boardPieces = boardPieces;
