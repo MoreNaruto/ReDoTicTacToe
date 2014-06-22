@@ -33,7 +33,8 @@ public class BoardTest {
         board = new Board(mockStream, boardPieces);
     }
     @Test
-    public void testDrawBoard(){
+    public void shouldDrawBoard(){
+
         board.drawBoard();
         verify(mockStream).println(
                 "  " + boardPieces[0] + "| " + boardPieces[1] + " | " + boardPieces[2] + "  \n" +
@@ -44,11 +45,32 @@ public class BoardTest {
     }
 
     @Test
-    public void testForBoardSpaceOccupied(){
-        board.placePlayerPiece(1, "P");
+    public void testPlaceHasValueAfterUserInput(){
+        board.placePlayerPiece(1, "X");
+        assertEquals(boardPieces[0], "X");
+    }
 
+    @Test
+    public void testForBoardSpaceOccupied(){
+        board.placePlayerPiece(1, "X");
         assertEquals(board.isAlreadyOccupied(1), true);
 
+    }
+
+    @Test
+    public void shouldHaveFullBoardWhenAllPlacesHavePieces(){
+        for (int i = 0; i < boardPieces.length; i++){
+            boardPieces[i] = "X";
+        }
+        assertEquals(board.boardFull(), true);
+    }
+
+    @Test
+    public void shouldHaveWinnerWhenTopRowFilledWithSame(){
+        boardPieces[0] = "X";
+        boardPieces[1] = "X";
+        boardPieces[2] = "X";
+        assertEquals(board.hasWinner(), true);
     }
 
 
