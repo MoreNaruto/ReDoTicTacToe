@@ -18,6 +18,7 @@ public class PlayerTest {
 
     private PrintStream mockStream;
     private BufferedReader mockReader;
+    private Game mockGame;
     private Board board;
     private Player player;
     private String[] boardPieces;
@@ -30,14 +31,14 @@ public class PlayerTest {
         }
         mockStream = mock(PrintStream.class);
         mockReader = mock(BufferedReader.class);
+        mockGame = mock(Game.class);
         board = new Board(mockStream, boardPieces);
-        player = new Player(mockReader, mockStream, board);
+        player = new Player(mockReader, mockStream, board, mockGame);
     }
 
     @Test
     public void testPlayer1MakeMove() throws IOException {
         player.player1Turn = true;
-        Game mockGame = mock(Game.class);
         when(mockReader.readLine()).thenReturn("1");
         when(mockGame.gameOver()).thenReturn(false).thenReturn(true);
         player.makeMove();
@@ -65,7 +66,7 @@ public class PlayerTest {
     @Test
     public void shouldReportWhenLocationisOccupied() throws IOException {
         Board mockBoard = mock(Board.class);
-        Player testPlayer = new Player(mockReader, mockStream, mockBoard);
+        Player testPlayer = new Player(mockReader, mockStream, mockBoard, mockGame);
         when(mockBoard.isAlreadyOccupied(1)).thenReturn(true).thenReturn(false);
         when(mockReader.readLine()).thenReturn("1");
         testPlayer.makeMove();
@@ -86,7 +87,7 @@ public class PlayerTest {
     @Test
     public void testIfBoardIsFull() throws IOException {
         Board mockBoard = mock(Board.class);
-        Player testPlayer = new Player(mockReader, mockStream, mockBoard);
+        Player testPlayer = new Player(mockReader, mockStream, mockBoard, mockGame);
         when(mockBoard.boardFull()).thenReturn(true);
         testPlayer.makeMove();
         verify(mockStream).println("Game is a draw");

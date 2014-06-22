@@ -14,10 +14,12 @@ public class Player {
     public boolean gameOver= false;
 
     private Board board;
+    private Game game;
     public boolean player1Turn = true;
 
-    public Player(BufferedReader reader, PrintStream out, Board board){
+    public Player(BufferedReader reader, PrintStream out, Board board, Game game){
 
+        this.game = game;
         this.reader = reader;
         this.out = out;
         this.board = board;
@@ -25,8 +27,7 @@ public class Player {
     }
 
     public void makeMove() throws IOException {
-        Game gameState = new Game(out, board);
-        while(!gameState.gameOver()) {
+        while(!game.gameOver()) {
 
             out.print("Enter a number between 1-9: ");
             int place = Integer.parseInt(reader.readLine());
